@@ -31,6 +31,7 @@ namespace ofxKinectForWindows2 {
 
 			ofFloatPixels getColorToWorldMap(int colorImageWidth = 1920, int colorImageHeight = 1080) const;
 			ofFloatPixels getDepthToWorldMap() const;
+			DepthSpacePoint* getColorToDepthMap(int colorImageWidth = 1920, int colorImageHeight = 1080) const;
 		protected:
 			ICoordinateMapper * coordinateMapper;
 		};

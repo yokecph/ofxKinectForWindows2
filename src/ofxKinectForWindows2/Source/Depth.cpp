@@ -142,6 +142,14 @@ namespace ofxKinectForWindows2 {
 			return colorToWorldMap;
 		}
 
+
+		DepthSpacePoint* Depth::getColorToDepthMap(int colorImageWidth, int colorImageHeight) const {
+			DepthSpacePoint* pDepthCoordinates;
+			pDepthCoordinates = new DepthSpacePoint[colorImageWidth*colorImageHeight];
+			this->coordinateMapper->MapColorFrameToDepthSpace( this->pixels.size(), const_cast<unsigned short*>(this->pixels.getPixels()), colorImageWidth * colorImageHeight, pDepthCoordinates );
+			return pDepthCoordinates;
+		}
+
 		//----------
 		ofFloatPixels Depth::getDepthToWorldMap() const {
 			ofFloatPixels depthToWorldMap;
