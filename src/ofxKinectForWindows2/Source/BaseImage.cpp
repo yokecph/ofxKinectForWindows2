@@ -150,23 +150,23 @@ namespace ofxKinectForWindows2 {
 		template OFXKFW2_BaseImageSimple_TEMPLATE_ARGS
 		void BaseImageSimple OFXKFW2_BaseImageSimple_TEMPLATE_ARGS_TRIM::update() {
 			CHECK_OPEN
-			isFrameNew = false;
-			FrameType * frame = NULL;
-			IFrameDescription * frameDescription = NULL;
+			this->isFrameNew = false;
+			FrameType * frame = nullptr;
+			IFrameDescription * frameDescription = nullptr;
 			try {
 				//acquire frame
 				if (FAILED(this->reader->AcquireLatestFrame(&frame))) {
 					return; // we often throw here when no new frame is available
 				}
 
-				INT64 relativeTime = 0;
+				long long relativeTime = 0;
 				if (FAILED(frame->get_RelativeTime(&relativeTime))) {
 					throw Exception("Failed to get relative time");
 				}
 				
-				if (relativeTime > lastFrameTime) {
-					relativeTime = lastFrameTime;
-					isFrameNew = true;
+				if (relativeTime > this->lastFrameTime) {
+					relativeTime = this->lastFrameTime;
+					this->isFrameNew = true;
 				} 
 				else {
 					SafeRelease(frame);

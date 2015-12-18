@@ -56,7 +56,7 @@ namespace ofxKinectForWindows2 {
 			float diagonalFieldOfView;
 			float horizontalFieldOfView;
 			float verticalFieldOfView;
-			long lastFrameTime;
+			long long lastFrameTime;
 			bool  isFrameNew;
 		};
 

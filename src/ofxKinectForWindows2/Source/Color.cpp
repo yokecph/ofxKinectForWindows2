@@ -1,5 +1,4 @@
 #include "Color.h"
-#include "ofMain.h"
 
 #define CHECK_OPEN if(!this->reader) { OFXKINECTFORWINDOWS2_ERROR << "Failed : Reader is not open"; }
 
@@ -20,9 +19,9 @@ namespace ofxKinectForWindows2 {
 
 		//----------
 		void Color::init(IKinectSensor * sensor) {
-			this->reader = NULL;
+			this->reader = nullptr;
 			try {
-				IColorFrameSource * source = NULL;
+				IColorFrameSource * source = nullptr;
 
 				if (FAILED(sensor->get_ColorFrameSource(& source))) {
 					throw(Exception("Failed to initialise Color source"));
@@ -43,8 +42,8 @@ namespace ofxKinectForWindows2 {
 		void Color::update() {
 			CHECK_OPEN
 
-			IColorFrame * frame = NULL;
-			IFrameDescription * frameDescription = NULL;
+			IColorFrame * frame = nullptr;
+			IFrameDescription * frameDescription = nullptr;
 			try {
 				//acquire frame
 				if (FAILED(this->reader->AcquireLatestFrame(&frame))) {
